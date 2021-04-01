@@ -1,18 +1,17 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 // 可调参数
 var BACKGROUND_COLOR = "rgba(0,43,54,1)"; // 背景颜色
-var POINT_NUM = 100; // 星星数目
+var POINT_NUM = 150; // 星星数目
 var POINT_COLOR = "rgba(255,255,255,0.7)"; // 点的颜色
 var LINE_LENGTH = 10000; // 点之间连线长度(的平方)
-
-
 
 const Particle = (props) => {
   const canvasRef = useRef(null);
   const [points, setPoints] = useState([]);
 
   const initPoints = (nums) => {
+    setPoints([]);
     let cvs = canvasRef.current;
     for (var i = 0; i < nums; i++) {
       setPoints((e) => [...e, new Point(cvs.width, cvs.height)]);
@@ -68,6 +67,8 @@ const Particle = (props) => {
   };
 
   const drawFrame = () => {
+    if (!canvasRef.current) return;
+
     var ctx = canvasRef.current.getContext("2d");
     let cvs = canvasRef.current;
 
@@ -89,10 +90,10 @@ const Particle = (props) => {
   };
 
   useEffect(() => {
-    initCursor()
+    initCursor();
     initPoints(POINT_NUM);
-    drawFrame();
   }, []);
+  drawFrame();
 
   return (
     <canvas
@@ -137,7 +138,6 @@ class Point {
     }
   }
   draw(ctx) {
-
     ctx.fillStyle = this.color;
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
@@ -153,7 +153,6 @@ const randomInt = (min, max) => {
 const randomFloat = (min, max) => {
   return (max - min) * Math.random() + min;
 };
-
 
 var p0 = new Point(); //鼠标
 export default Particle;
