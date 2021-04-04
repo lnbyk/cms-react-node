@@ -1,37 +1,9 @@
-$small: 400px;
-.AuthContainer {
-  width: 328px;
-  min-height: 270px;
-  justify-content: space-between;
-  align-items: center;
-  @media screen and (max-width: $small) {
-    width: 95%;
-    max-width: 328px;
-  }
-
-  background-color: white;
-  padding: 10px 10px 10px 10px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1);
-
-  transform: translate(-50%, -50%);
-  position: absolute;
-  top: 50%;
-  left: 50%;
+.formContainer {
+  background-color: red;
+}
 
 
-  display: flex;
-  flex-direction: column;
-  .formContainer {
-    background-color: red;
-  }
-
-  .inputbox {
-    margin-top: 20px;
-  }
-
-  .button {
-    width: 80%;
-    margin-top: 10px;
-
-  }
+.button {
+  width: 80%;
+  margin-top: 10px;
 }

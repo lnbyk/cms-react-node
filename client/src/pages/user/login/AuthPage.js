@@ -11,7 +11,28 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
 import FormControl from "@material-ui/core/FormControl";
+import styled from "styled-components";
 import "./AuthPage.scss";
+
+const AuthContainer = styled.div`
+  width: 328px;
+  min-height: 280px;
+  justify-content: space-between;
+  align-items: center;
+  @media screen and (max-width: 400px) {
+    width: 95%;
+    max-width: 328px;
+  }
+
+  background-color: white;
+  padding: 10px 10px 10px 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1);
+
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+`;
 
 const TabPanel = (props) => {
   const { children, value, index, ...other } = props;
@@ -33,6 +54,13 @@ const TabPanel = (props) => {
   );
 };
 
+const VerticalStack = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+`;
+
 const AuthPage = (props) => {
   const [tab, setTab] = React.useState(0);
 
@@ -45,7 +73,7 @@ const AuthPage = (props) => {
   };
 
   return (
-    <div className="AuthContainer">
+    <AuthContainer>
       <Tabs
         value={tab}
         onChange={handleChange}
@@ -58,49 +86,97 @@ const AuthPage = (props) => {
         <Tab label="Sign Up" />
       </Tabs>
 
-      <SwipeableViews
-        index={tab}
-        onChangeIndex={handleChangeIndex}
-      >
+      <SwipeableViews index={tab} onChangeIndex={handleChangeIndex}>
         <TabPanel value={tab} index={0}>
-          <TextField
-            className="inputbox"
-            id="input-with-icon-textfield"
-            label="Username"
-            variant="outlined"
-            style={{width:'100%'}}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <AccountCircle />
-                </InputAdornment>
-              ),
-            }}
-          />
-          <TextField
-            className="inputbox"
-            id="input-with-icon-textfield"
-            label="Password"
-            variant="outlined"
-            style={{width:'100%'}}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <LockIcon />
-                </InputAdornment>
-              ),
-            }}
-          />
+          <VerticalStack>
+            <TextField
+              id="input-with-icon-textfield"
+              label="Username"
+              variant="outlined"
+              style={{ width: "100%", marginTop: 20 }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <AccountCircle />
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <TextField
+              className="inputbox"
+              id="input-with-icon-textfield"
+              label="Password"
+              variant="outlined"
+              style={{ width: "100%", marginTop: 20 }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <LockIcon />
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <br />
+            <Button variant="contained" className="button" color="primary">
+              Sign In
+            </Button>
+            <br />
+            <Link href="#" variant="body2" color="secondary">
+              {"Forgot password ?"}
+            </Link>
+          </VerticalStack>
         </TabPanel>
         <TabPanel value={tab} index={1}>
-          Item Two
+          <VerticalStack>
+            <TextField
+              id="input-with-icon-textfield"
+              label="Username"
+              variant="outlined"
+              style={{ width: "100%", marginTop: 20 }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <AccountCircle />
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <TextField
+              className="inputbox"
+              id="input-with-icon-textfield"
+              label="Password"
+              variant="outlined"
+              style={{ width: "100%", marginTop: 20 }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <LockIcon />
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <TextField
+              className="inputbox"
+              id="input-with-icon-textfield"
+              label="Re-password"
+              variant="outlined"
+              style={{ width: "100%", marginTop: 20 }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start" >
+                    <LockIcon color="primary"/>
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <br />
+            <Button variant="contained" className="button" color="primary">
+              Sign Up
+            </Button>
+          </VerticalStack>
         </TabPanel>
       </SwipeableViews>
-      <Button variant="outlined" className="button">Sign In</Button>
-      <Link href="#" variant="body2">
-        {"Forgot password ?"}
-      </Link>
-    </div>
+    </AuthContainer>
   );
 };
 
