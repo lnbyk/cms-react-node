@@ -34,6 +34,7 @@ const AuthContainer = styled.div`
   left: 50%;
 `;
 
+
 const TabPanel = (props) => {
   const { children, value, index, ...other } = props;
 
@@ -97,7 +98,7 @@ const AuthPage = (props) => {
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <AccountCircle />
+                    <AccountCircle color="primary"/>
                   </InputAdornment>
                 ),
               }}
@@ -111,13 +112,13 @@ const AuthPage = (props) => {
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <LockIcon />
+                    <LockIcon color="primary"/>
                   </InputAdornment>
                 ),
               }}
             />
             <br />
-            <Button variant="contained" className="button" color="primary">
+            <Button variant="contained" className="button" color="primary" style={{width: "80%"}}>
               Sign In
             </Button>
             <br />
@@ -136,7 +137,7 @@ const AuthPage = (props) => {
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <AccountCircle />
+                    <AccountCircle color="primary"/>
                   </InputAdornment>
                 ),
               }}
@@ -145,12 +146,13 @@ const AuthPage = (props) => {
               className="inputbox"
               id="input-with-icon-textfield"
               label="Password"
+              type="password"
               variant="outlined"
               style={{ width: "100%", marginTop: 20 }}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <LockIcon />
+                    <LockIcon color="primary" />
                   </InputAdornment>
                 ),
               }}
@@ -170,7 +172,7 @@ const AuthPage = (props) => {
               }}
             />
             <br />
-            <Button variant="contained" className="button" color="primary">
+            <Button variant="contained" className="button" color="primary" style={{width: "80%"}}>
               Sign Up
             </Button>
           </VerticalStack>
